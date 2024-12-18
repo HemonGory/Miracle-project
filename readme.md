@@ -65,5 +65,127 @@ Once this is done, your GitHub repository will contain a well-documented README 
 
 
 
+DOC.TXT
+DOCUMENTATION OF WHOLE PROCESS
+
+Launch an AWS EC2 Instance:
+
+Logged into your AWS account.
+Created an EC2 instance using the Ubuntu 20.04 AMI.
+Selected an instance type (e.g., t2.micro).
+Configured the security group to allow the following:
+HTTP (port 80): For web traffic.
+HTTPS (port 443): For secure web traffic.
+SSH (port 22): For remote access to the server.
+Access the Instance:
+
+Used SSH to connect to your EC2 instance:
+bash
+Copy code
+ssh -i your-key.pem ubuntu@<instance-public-ip>
+Step 2: Installing and Configuring Nginx
+Update System Packages:
+
+Ran the following commands to ensure the system is up to date:
+bash
+Copy code
+sudo apt update
+sudo apt upgrade -y
+Install Nginx:
+
+Installed the Nginx web server:
+bash
+Copy code
+sudo apt install nginx -y
+Start and Enable Nginx:
+
+Ensured Nginx is running and set to start on boot:
+bash
+Copy code
+sudo systemctl start nginx
+sudo systemctl enable nginx
+Verify Nginx Installation:
+
+Opened the browser and accessed the server's public IP (http://<public-ip>) to confirm the default Nginx page.
+
+
+Step 3: Deploying the HTML Page
+At this stage i sued vs code to make the index.html then copy pasted it on the nginx html
+
+Navigate to the Web Root Directory:
+
+Changed to the default web root directory for Nginx:
+bash
+Copy code
+cd /var/www/html
+Backup the Default Nginx Page:
+
+Backed up the default page:
+bash
+Copy code
+sudo mv index.nginx-debian.html index.html.bak
+Create Your HTML Page:
+
+Created a new index.html file:
+bash
+Copy code
+Restart Nginx to Apply Changes:
+
+Restarted Nginx to serve the new page:
+bash
+Copy code
+sudo systemctl restart nginx
+Test the Page:
+
+Opened http://13.60.30.214 in a browser to verify the page.
+
+
+
+
+
+Step 4: Configuring HTTPS with SSL
+Install Certbot:
+
+Installed Certbot and the Nginx plugin:
+bash
+Copy code
+sudo apt install certbot python3-certbot-nginx -y
+Obtain and Configure SSL Certificate:
+
+Ran the Certbot command to issue an SSL certificate for your domain:
+bash
+Copy code
+sudo certbot --nginx -d ifyproject.online
+Followed the prompts to:
+Enter your email address.
+Agree to the Terms of Service.
+Decline sharing your email address with EFF (optional).
+Automatic HTTPS Configuration:
+
+Certbot automatically configured Nginx to redirect HTTP to HTTPS.
+Verify HTTPS:
+
+Opened https://ifyproject.online in a browser to confirm the secure connection.
+
+
+
+
+Step 5: Testing and Validation
+Verify Domain Accessibility:
+
+Accessed http://ifyproject.online to confirm it redirected to https://ifyproject.online.
+Test SSL Auto-Renewal:
+
+Ran the following command to test SSL renewal:
+bash
+Copy code
+sudo certbot renew --dry-run
+Verified that the renewal process works without errors.
+
+Public URL:
+
+My website is live at: https://ifyproject.online with SSL.
+
+
 
 
