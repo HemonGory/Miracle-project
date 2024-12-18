@@ -1,4 +1,8 @@
 # Project Title: Miracle Project Landing Page
+My website is live at: https://ifyproject.online with SSL.
+My Ip address is 13.60.30.214
+
+
 
 ## Description
 The "Miracle Project Landing Page" is a simple web page hosted on an Nginx server on AWS. This project demonstrates setting up a Linux server, installing Nginx, deploying an HTML page, configuring SSL with Certbot, and making the page accessible securely via HTTPS. The landing page introduces the user and includes basic project information.
@@ -185,6 +189,8 @@ Verified that the renewal process works without errors.
 Public URL:
 
 My website is live at: https://ifyproject.online with SSL.
+My Ip address is 13.60.30.214
+
 
 
 
